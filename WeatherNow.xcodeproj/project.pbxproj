@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4EE298C3640007184AB /* AppDelegate.swift */; };
-		4B93F4F1298C3640007184AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* ViewController.swift */; };
+		4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* HomeViewController.swift */; };
 		4B93F4F4298C3640007184AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F2298C3640007184AB /* Main.storyboard */; };
 		4B93F4F6298C3641007184AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F5298C3641007184AB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		4B93F4EB298C3640007184AB /* WeatherNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B93F4EE298C3640007184AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4B93F4F0298C3640007184AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4B93F4F0298C3640007184AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4B93F4F3298C3640007184AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B93F4F5298C3641007184AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				4B93F4EE298C3640007184AB /* AppDelegate.swift */,
-				4B93F4F0298C3640007184AB /* ViewController.swift */,
+				4B93F4F0298C3640007184AB /* HomeViewController.swift */,
 				4B93F4F2298C3640007184AB /* Main.storyboard */,
 				4B93F4F5298C3641007184AB /* Assets.xcassets */,
 			);
@@ -129,7 +129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B93F4F1298C3640007184AB /* ViewController.swift in Sources */,
+				4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */,
 				4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
