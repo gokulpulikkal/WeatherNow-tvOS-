@@ -14,20 +14,36 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFit
         imageView.adjustsImageWhenAncestorFocused = true
+        imageView.masksFocusEffectToContents = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "transparentBackground")?.withRenderingMode(.alwaysTemplate)
         return imageView
+    }()
+    
+    lazy var timeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "text"
+        return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(backgroundImageView)
+        let cellContentView = backgroundImageView.overlayContentView
+        cellContentView.addSubview(timeLabel)
         NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor, constant: 40),
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -40),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40)
+            backgroundImageView.topAnchor.constraint(equalTo: topAnchor, constant: 0),
+            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            timeLabel.topAnchor.constraint(equalTo: cellContentView.topAnchor, constant: 0),
+            timeLabel.leadingAnchor.constraint(equalTo: cellContentView.leadingAnchor, constant: 0),
+            timeLabel.bottomAnchor.constraint(equalTo: cellContentView.bottomAnchor, constant: 0),
+            timeLabel.trailingAnchor.constraint(equalTo: cellContentView.trailingAnchor, constant: 0)
         ])
-        backgroundImageView.image = UIImage(named: "nightSky")
+        backgroundImageView.overlayContentView.backgroundColor = UIColor(hexString: "#2a2a2a")
+        backgroundImageView.overlayContentView.layer.cornerRadius = 10
     }
 
     required init?(coder: NSCoder) {
@@ -40,6 +56,6 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        backgroundImageView.contentMode = .scaleAspectFit
+        
     }
 }

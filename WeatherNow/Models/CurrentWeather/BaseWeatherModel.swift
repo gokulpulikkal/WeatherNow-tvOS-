@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct CurrentWeatherModel: Decodable {
-    let main: BasicWeatherDetails?
-    let weather: [Weather]?
+struct BaseWeatherModel: Decodable {
+    let main: Weather?
+    let weather: [WeatherDetails]?
 }
 
-struct BasicWeatherDetails: Decodable {
+struct Weather: Decodable {
     let temp: Float?
     let feelsLike: Float?
     let tempMin: Float?
@@ -31,7 +31,7 @@ struct BasicWeatherDetails: Decodable {
     }
 }
 
-struct Weather: Decodable {
+struct WeatherDetails: Decodable {
     let id: Int?
     let main: String?
     let description: String?

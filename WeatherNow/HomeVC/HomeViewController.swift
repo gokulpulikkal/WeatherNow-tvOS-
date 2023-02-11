@@ -20,6 +20,8 @@ class HomeViewController: UIViewController {
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
     
+    var weatherList: [BaseWeatherModel] = []
+    
     lazy var forecastCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: getCollectionViewLayout())
         collectionView.register(ForeCastCollectionViewCell.self, forCellWithReuseIdentifier: ForeCastCollectionViewCell.CELL_IDENTIFIER)
@@ -47,15 +49,24 @@ class HomeViewController: UIViewController {
             self.lowestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMin ?? 0))°C"
             self.weatherStatusImageView.image = UIImage(named: "\(currentWeather.weather?.first?.main ?? "").png")
         }
+        
+        getForecastData(lon: 12.9767936, lat: 12.9767936) { [weak self] forecastList in
+            guard let self = self else { return }
+            guard let weatherList = forecastList.weatherList else { return }
+            
+            self.weatherList = weatherList
+            self.forecastCollectionView.reloadData()
+            
+        }
     }
 
     private func getCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        layout.itemSize = CGSize(width: 430, height: 220)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 40
+        layout.itemSize = CGSize(width: 480, height: 250)
         return layout
     }
     
@@ -65,7 +76,7 @@ class HomeViewController: UIViewController {
             forecastCollectionView.topAnchor.constraint(equalTo: weatherStatusLabel.bottomAnchor),
             forecastCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             forecastCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            forecastCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            forecastCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -73,7 +84,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.weatherList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -82,6 +93,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForeCastCollectionViewCell.CELL_IDENTIFIER, for: indexPath)
+        if indexPath.item < self.weatherList.count {
+            let forecastDataAtIndex = self.weatherList[indexPath.item]
+        }
         return cell
     }
     
