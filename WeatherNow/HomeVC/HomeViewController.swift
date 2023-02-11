@@ -33,7 +33,20 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
-        view.backgroundColor = .darkGray
+        makeInitialAPICalls()
+    }
+    
+   //MARK: - API calls
+    func makeInitialAPICalls() {
+        getCurrentWeather(lon: 12.9767936, lat: 12.9767936) { [weak self] currentWeather in
+            guard let self = self else { return }
+            self.temperatureLabel.text = "\(Int(currentWeather.main?.temp ?? 0))°C"
+            self.weatherStatusLabel.text = currentWeather.weather?.first?.description ?? ""
+            self.feelsLikeLabel.text = "\(Int(currentWeather.main?.feelsLike ?? 0))°C"
+            self.highestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMax ?? 0))°C"
+            self.lowestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMin ?? 0))°C"
+            self.weatherStatusImageView.image = UIImage(named: "\(currentWeather.weather?.first?.main ?? "").png")
+        }
     }
 
     private func getCollectionViewLayout() -> UICollectionViewLayout {
