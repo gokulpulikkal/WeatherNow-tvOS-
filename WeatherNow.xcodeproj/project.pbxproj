@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B74AD55298D894E00F2023D /* ForeCastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B74AD54298D894E00F2023D /* ForeCastCollectionViewCell.swift */; };
 		4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4EE298C3640007184AB /* AppDelegate.swift */; };
 		4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* HomeViewController.swift */; };
 		4B93F4F4298C3640007184AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F2298C3640007184AB /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B74AD54298D894E00F2023D /* ForeCastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCastCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B93F4EB298C3640007184AB /* WeatherNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B93F4EE298C3640007184AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B93F4F0298C3640007184AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +34,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B74AD53298D891200F2023D /* ForecastCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4B74AD54298D894E00F2023D /* ForeCastCollectionViewCell.swift */,
+			);
+			path = ForecastCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		4B93F4E2298C3640007184AB = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +61,7 @@
 		4B93F4ED298C3640007184AB /* WeatherNow */ = {
 			isa = PBXGroup;
 			children = (
+				4B74AD53298D891200F2023D /* ForecastCollectionViewCell */,
 				4B93F4EE298C3640007184AB /* AppDelegate.swift */,
 				4B93F4F0298C3640007184AB /* HomeViewController.swift */,
 				4B93F4F2298C3640007184AB /* Main.storyboard */,
@@ -130,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */,
+				4B74AD55298D894E00F2023D /* ForeCastCollectionViewCell.swift in Sources */,
 				4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +295,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 15.0;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -308,7 +320,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 15.0;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
