@@ -133,7 +133,7 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         guard let cellData = self.cellData else { return }
         
         if let time = cellData.timeInSec {
-            timeLabel.text = "\(time)"
+            timeLabel.text = getTimeStringFromSec(seconds: time)
         }
         
         if let weatherDescription = cellData.weather?.first?.description {

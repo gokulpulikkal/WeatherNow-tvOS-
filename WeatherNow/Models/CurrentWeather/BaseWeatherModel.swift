@@ -8,7 +8,7 @@
 import Foundation
 
 struct BaseWeatherModel: Decodable {
-    let timeInSec: Int?
+    let timeInSec: Double?
     let main: Weather?
     let weather: [WeatherDetails]?
 
