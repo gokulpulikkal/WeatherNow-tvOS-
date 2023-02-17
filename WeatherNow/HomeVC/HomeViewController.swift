@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 40
+        layout.minimumLineSpacing = 50
         layout.itemSize = CGSize(width: 480, height: 250)
         return layout
     }
