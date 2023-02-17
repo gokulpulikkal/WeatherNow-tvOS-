@@ -93,8 +93,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ForeCastCollectionViewCell.CELL_IDENTIFIER, for: indexPath)
-        if indexPath.item < self.weatherList.count {
+        if indexPath.item < self.weatherList.count, let forecastCell = cell as? ForeCastCollectionViewCell {
             let forecastDataAtIndex = self.weatherList[indexPath.item]
+            forecastCell.cellData = forecastDataAtIndex
         }
         return cell
     }

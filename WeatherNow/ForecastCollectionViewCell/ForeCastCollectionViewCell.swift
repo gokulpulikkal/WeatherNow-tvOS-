@@ -26,7 +26,6 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         imageView.adjustsImageWhenAncestorFocused = false
         imageView.masksFocusEffectToContents = false
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Clear")
         return imageView
     }()
     
@@ -34,7 +33,6 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 28)
-        label.text = "timeLabel"
         return label
     }()
     
@@ -42,7 +40,6 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 28)
-        label.text = "weatherConditionLabel"
         return label
     }()
     
@@ -50,17 +47,21 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 40)
-        label.text = "H: 21"
         return label
     }()
     
     lazy var lowestTempLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 40)
-        label.text = "L: 10"
+        label.font = UIFont.boldSystemFont(ofSize: 40)
         return label
     }()
+    
+    var cellData: BaseWeatherModel? {
+        didSet {
+            setDataOnViews()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -124,5 +125,32 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         stackView.alignment = alignment
         stackView.spacing = itemSpacing
         return stackView
+    }
+    
+//    MARK: - Set data on the views
+    
+    private func setDataOnViews() {
+        guard let cellData = self.cellData else { return }
+        
+        if let time = cellData.timeInSec {
+            timeLabel.text = "\(time)"
+        }
+        
+        if let weatherDescription = cellData.weather?.first?.description {
+            weatherConditionLabel.text = weatherDescription
+        }
+        
+        if let icon = cellData.weather?.first?.main {
+            weatherImageView.image = UIImage(named: "\(icon)")
+        }
+        
+        if let maxTemp = cellData.main?.tempMax {
+            highestTempLabel.text = "H: \(Int(round(maxTemp))) °C"
+        }
+        
+        if let minTemp = cellData.main?.tempMin {
+            lowestTempLabel.text = "L : \(Int(round(minTemp))) °C"
+        }
+        
     }
 }

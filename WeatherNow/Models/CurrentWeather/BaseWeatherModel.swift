@@ -8,8 +8,16 @@
 import Foundation
 
 struct BaseWeatherModel: Decodable {
+    let timeInSec: Int?
     let main: Weather?
     let weather: [WeatherDetails]?
+
+    //  This is to change the key that we are getting from the response to match with the model fields
+    private enum CodingKeys: String, CodingKey {
+        case timeInSec = "dt"
+        case main
+        case weather
+    }
 }
 
 struct Weather: Decodable {
