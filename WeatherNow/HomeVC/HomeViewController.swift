@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var lowestTemperatureLabel: UILabel!
     
     private var timer: Timer?
+    var menuPressRecognizer: UITapGestureRecognizer?
     
     let screenWidth = UIScreen.main.bounds.width
     let screenHeight = UIScreen.main.bounds.height
@@ -39,6 +40,8 @@ class HomeViewController: UIViewController {
         showTimeLabel()
         setUpCollectionView()
         makeInitialAPICalls()
+        
+        setUpMenuPressHandler()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -76,6 +79,29 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func showOptionsAlertVC() {
+        let title = "Hey There"
+        let message = "What do you wanna do now? Select one option"
+        let locationChangeButtonTitle = "Change Location"
+        let backButtonTitle = "Exit!"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        // Create the actions.
+        let changeLocationAction = UIAlertAction(title: locationChangeButtonTitle, style: .default) { [weak self] _ in
+            self?.onSelectingLocationChange()
+        }
+        
+        let backAction = UIAlertAction(title: backButtonTitle, style: .cancel) { [weak self] _ in
+            self?.onSelectingBackButton()
+        }
+        
+        // Add the actions.
+        alertController.addAction(changeLocationAction)
+        alertController.addAction(backAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
    //MARK: - API calls
     func makeInitialAPICalls() {
         getCurrentWeather(lon: 12.9767936, lat: 12.9767936) { [weak self] currentWeather in
@@ -96,6 +122,26 @@ class HomeViewController: UIViewController {
             self.forecastCollectionView.reloadData()
             
         }
+    }
+    
+    //MARK: - Button press handling
+    
+    func setUpMenuPressHandler() {
+        menuPressRecognizer = UITapGestureRecognizer()
+        menuPressRecognizer!.addTarget(self, action: #selector(onMenuPressOnRemote))
+        menuPressRecognizer!.allowedPressTypes = [NSNumber(value: UIPress.PressType.menu.rawValue)]
+        self.view.addGestureRecognizer(menuPressRecognizer!)
+    }
+    
+    @objc func onMenuPressOnRemote() {
+        showOptionsAlertVC()
+    }
+    
+    private func onSelectingLocationChange() {
+    }
+    
+    private func onSelectingBackButton() {
+        UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
     }
     
 }
