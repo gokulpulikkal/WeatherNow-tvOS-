@@ -102,6 +102,29 @@ class HomeViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    private func showLocationSelectorView() {
+        
+        let searchResultsController = LocationSearchResultVC()
+        /*
+            Create a UISearchController, passing the `searchResultsController` to
+            use to display search results.
+        */
+        let searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.searchResultsUpdater = searchResultsController
+        searchController.searchBar.placeholder = NSLocalizedString("Enter keyword (e.g. iceland)", comment: "")
+        
+        // Contain the `UISearchController` in a `UISearchContainerViewController`.
+        let searchContainer = UISearchContainerViewController(searchController: searchController)
+        searchContainer.title = NSLocalizedString("Search", comment: "")
+        
+        self.navigationController?.pushViewController(searchContainer, animated: true)
+        
+        // Sets the focus to the SearchControllerView
+        updateFocusIfNeeded()
+        setNeedsFocusUpdate()
+        
+    }
+    
    //MARK: - API calls
     func makeInitialAPICalls() {
         getCurrentWeather(lon: 12.9767936, lat: 12.9767936) { [weak self] currentWeather in
@@ -138,6 +161,7 @@ class HomeViewController: UIViewController {
     }
     
     private func onSelectingLocationChange() {
+        showLocationSelectorView()
     }
     
     private func onSelectingBackButton() {

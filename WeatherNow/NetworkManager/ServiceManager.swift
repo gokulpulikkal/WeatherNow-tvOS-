@@ -14,11 +14,11 @@ public class ServiceManager {
     func callService<T: Decodable>(urlString: String,
                                    method: HTTPMethod,
                                    success: @escaping (T)->(),
-                                   fail: @escaping (HTTPError)->()) {
+                                   fail: @escaping (HTTPError)->()) -> URLSessionDataTask? {
         
         guard let urlObj = URL(string: urlString) else {
             fail(.requestError)
-            return
+            return nil
         }
         
         let urlSession = URLSession.shared
@@ -43,5 +43,6 @@ public class ServiceManager {
             }
         }
         task.resume()
+        return task
     }
 }
