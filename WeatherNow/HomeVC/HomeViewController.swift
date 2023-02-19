@@ -16,14 +16,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var feelsLikeLabel: UILabel!
     @IBOutlet weak var highestTemperatureLabel: UILabel!
     @IBOutlet weak var lowestTemperatureLabel: UILabel!
+    @IBOutlet weak var feelsLikeTitleLabel: UILabel!
+    @IBOutlet weak var highestTempTitleLabel: UILabel!
+    @IBOutlet weak var lowestTempTitleLabel: UILabel!
     
     private var timer: Timer?
     var menuPressRecognizer: UITapGestureRecognizer?
     
     let LOCATION_USER_DEFAULTS_KEY = "location"
-    var canExitAppIfNoLocation = false
     var location: LocationModel? {
         didSet {
+            self.locationLabel.isHidden = false
             self.locationLabel.text = location?.name ?? ""
         }
     }
@@ -45,7 +48,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .RefreshDataNotification, object: nil)
         showTimeLabel()
         setUpCollectionView()
-        UserDefaults.standard.removeObject(forKey: LOCATION_USER_DEFAULTS_KEY)
+//        UserDefaults.standard.removeObject(forKey: LOCATION_USER_DEFAULTS_KEY)
         setUpHomeViewData()
         setUpMenuPressHandler()
     }
@@ -76,7 +79,18 @@ class HomeViewController: UIViewController {
     
     // Refreshes the data for the UI
     @objc func refreshData() {
+        clearUI()
         setUpHomeViewData()
+    }
+    
+    func clearUI() {
+        self.feelsLikeTitleLabel.isHidden = true
+        self.highestTempTitleLabel.isHidden = true
+        self.lowestTempTitleLabel.isHidden = true
+        
+        self.locationLabel.isHidden = true
+        weatherList = []
+        forecastCollectionView.reloadData()
     }
     
     private func setUpCollectionView() {
@@ -100,11 +114,18 @@ class HomeViewController: UIViewController {
     }
     
     private func showTimeLabel() {
+        //Show the value for first time
+        self.dateTimeLabel.text = getCurrentTime()
+        //start the timer to show the timeLabel
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "E, MMMM d h:mma"
-            self?.dateTimeLabel.text = formatter.string(from: Date())
+            self?.dateTimeLabel.text = self?.getCurrentTime()
         }
+    }
+    
+    private func getCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, MMMM d h:mma"
+        return formatter.string(from: Date())
     }
     
     private func showOptionsAlertVC(title: String = "Hey There",
@@ -123,14 +144,13 @@ class HomeViewController: UIViewController {
             self?.onSelectingLocationChange()
         }
         
-        let backAction = UIAlertAction(title: backButtonTitle, style: .cancel) { [weak self] _ in
+        let backAction = UIAlertAction(title: backButtonTitle, style: .default) { [weak self] _ in
             self?.onSelectingBackButton()
         }
         
         // Add the actions.
         alertController.addAction(changeLocationAction)
         alertController.addAction(backAction)
-        self.canExitAppIfNoLocation = true
         present(alertController, animated: true, completion: nil)
     }
     
@@ -168,6 +188,10 @@ class HomeViewController: UIViewController {
             self.highestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMax ?? 0))°C"
             self.lowestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMin ?? 0))°C"
             self.weatherStatusImageView.image = UIImage(named: "\(currentWeather.weather?.first?.main ?? "")")
+            
+            self.feelsLikeTitleLabel.isHidden = false
+            self.highestTempTitleLabel.isHidden = false
+            self.lowestTempTitleLabel.isHidden = false
         }
         
         getForecastData(lon: location.longitude ?? 0, lat: location.latitude ?? 0) { [weak self] forecastList in
@@ -176,7 +200,10 @@ class HomeViewController: UIViewController {
             
             self.weatherList = weatherList
             self.forecastCollectionView.reloadData()
-            
+            if weatherList.count > 0 {
+                // making the first item in focus
+                self.forecastCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .left, animated: false)
+            }
         }
     }
     
