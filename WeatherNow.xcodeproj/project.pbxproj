@@ -16,6 +16,9 @@
 		4B78A32F2998087700F761AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B78A32E2998087700F761AA /* Extensions.swift */; };
 		4B8CBF2D299FF85900C4D462 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF2C299FF85900C4D462 /* UtilityFunctions.swift */; };
 		4B8CBF3029A1514200C4D462 /* LocationSearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF2F29A1514100C4D462 /* LocationSearchResultVC.swift */; };
+		4B8CBF3229A1F75400C4D462 /* Configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3129A1F75400C4D462 /* Configs.plist */; };
+		4B8CBF3429A1F83500C4D462 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3329A1F83500C4D462 /* Configurations.swift */; };
+		4B8CBF3629A2062B00C4D462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3529A2062B00C4D462 /* .gitignore */; };
 		4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4EE298C3640007184AB /* AppDelegate.swift */; };
 		4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* HomeViewController.swift */; };
 		4B93F4F4298C3640007184AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F2298C3640007184AB /* Main.storyboard */; };
@@ -32,6 +35,9 @@
 		4B78A32E2998087700F761AA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4B8CBF2C299FF85900C4D462 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		4B8CBF2F29A1514100C4D462 /* LocationSearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchResultVC.swift; sourceTree = "<group>"; };
+		4B8CBF3129A1F75400C4D462 /* Configs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configs.plist; sourceTree = "<group>"; };
+		4B8CBF3329A1F83500C4D462 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
+		4B8CBF3529A2062B00C4D462 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4B93F4EB298C3640007184AB /* WeatherNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B93F4EE298C3640007184AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B93F4F0298C3640007184AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8CBF2C299FF85900C4D462 /* UtilityFunctions.swift */,
+				4B8CBF3329A1F83500C4D462 /* Configurations.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -152,8 +159,10 @@
 				4B78A31E2997989B00F761AA /* HomeVC */,
 				4B74AD53298D891200F2023D /* ForecastCollectionViewCell */,
 				4B93F4EE298C3640007184AB /* AppDelegate.swift */,
+				4B8CBF3129A1F75400C4D462 /* Configs.plist */,
 				4B93F4F2298C3640007184AB /* Main.storyboard */,
 				4B93F4F5298C3641007184AB /* Assets.xcassets */,
+				4B8CBF3529A2062B00C4D462 /* .gitignore */,
 			);
 			path = WeatherNow;
 			sourceTree = "<group>";
@@ -216,8 +225,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B8CBF3629A2062B00C4D462 /* .gitignore in Resources */,
 				4B93F4F6298C3641007184AB /* Assets.xcassets in Resources */,
 				4B93F4F4298C3640007184AB /* Main.storyboard in Resources */,
+				4B8CBF3229A1F75400C4D462 /* Configs.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +241,7 @@
 			files = (
 				4B78A32C2997A4FD00F761AA /* BaseWeatherModel.swift in Sources */,
 				4B78A32F2998087700F761AA /* Extensions.swift in Sources */,
+				4B8CBF3429A1F83500C4D462 /* Configurations.swift in Sources */,
 				4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */,
 				4B78A3292997A36500F761AA /* HomeVCModel.swift in Sources */,
 				4B78A3272997A10100F761AA /* ForeCastResponse.swift in Sources */,
