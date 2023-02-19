@@ -20,6 +20,8 @@
 		4B8CBF3429A1F83500C4D462 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3329A1F83500C4D462 /* Configurations.swift */; };
 		4B8CBF3629A2062B00C4D462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3529A2062B00C4D462 /* .gitignore */; };
 		4B8CBF3929A20B3B00C4D462 /* LocationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */; };
+		4B8CBF3B29A2610900C4D462 /* LocationResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3A29A2610900C4D462 /* LocationResultTableViewCell.swift */; };
+		4B8CBF3E29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3D29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift */; };
 		4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4EE298C3640007184AB /* AppDelegate.swift */; };
 		4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* HomeViewController.swift */; };
 		4B93F4F4298C3640007184AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F2298C3640007184AB /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		4B8CBF3329A1F83500C4D462 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		4B8CBF3529A2062B00C4D462 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsResponseModel.swift; sourceTree = "<group>"; };
+		4B8CBF3A29A2610900C4D462 /* LocationResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultTableViewCell.swift; sourceTree = "<group>"; };
+		4B8CBF3D29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDelegateProtocol.swift; sourceTree = "<group>"; };
 		4B93F4EB298C3640007184AB /* WeatherNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B93F4EE298C3640007184AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B93F4F0298C3640007184AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8CBF2F29A1514100C4D462 /* LocationSearchResultVC.swift */,
+				4B8CBF3A29A2610900C4D462 /* LocationResultTableViewCell.swift */,
 			);
 			path = LocationSearch;
 			sourceTree = "<group>";
@@ -141,6 +146,14 @@
 				4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */,
 			);
 			name = LocationData;
+			sourceTree = "<group>";
+		};
+		4B8CBF3C29A26D0800C4D462 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4B8CBF3D29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		4B93F4E2298C3640007184AB = {
@@ -162,6 +175,7 @@
 		4B93F4ED298C3640007184AB /* WeatherNow */ = {
 			isa = PBXGroup;
 			children = (
+				4B8CBF3C29A26D0800C4D462 /* Protocols */,
 				4B8CBF2E29A1510C00C4D462 /* LocationSearch */,
 				4B8CBF2B299FF83400C4D462 /* Utilities */,
 				4B78A32D2998085D00F761AA /* Extensions */,
@@ -253,11 +267,13 @@
 				4B78A32C2997A4FD00F761AA /* BaseWeatherModel.swift in Sources */,
 				4B78A32F2998087700F761AA /* Extensions.swift in Sources */,
 				4B8CBF3429A1F83500C4D462 /* Configurations.swift in Sources */,
+				4B8CBF3B29A2610900C4D462 /* LocationResultTableViewCell.swift in Sources */,
 				4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */,
 				4B78A3292997A36500F761AA /* HomeVCModel.swift in Sources */,
 				4B78A3272997A10100F761AA /* ForeCastResponse.swift in Sources */,
 				4B74AD55298D894E00F2023D /* ForeCastCollectionViewCell.swift in Sources */,
 				4B8CBF3929A20B3B00C4D462 /* LocationsResponseModel.swift in Sources */,
+				4B8CBF3E29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift in Sources */,
 				4B8CBF3029A1514200C4D462 /* LocationSearchResultVC.swift in Sources */,
 				4B78A323299799D100F761AA /* ServiceManager.swift in Sources */,
 				4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */,

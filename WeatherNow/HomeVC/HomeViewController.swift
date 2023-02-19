@@ -105,6 +105,7 @@ class HomeViewController: UIViewController {
     private func showLocationSelectorView() {
         
         let searchResultsController = LocationSearchResultVC()
+        searchResultsController.delegate = self
         /*
             Create a UISearchController, passing the `searchResultsController` to
             use to display search results.
@@ -187,14 +188,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-//        if let nextFocusedIndexPath = context.nextFocusedIndexPath, let cell = collectionView.cellForItem(at: nextFocusedIndexPath) as? ForeCastCollectionViewCell {
-////            cell.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-//        }
-//        if let previouslyFocusedIndexPath = context.previouslyFocusedIndexPath, let cell = collectionView.cellForItem(at: previouslyFocusedIndexPath) as? ForeCastCollectionViewCell {
-////            cell.transform = CGAffineTransform(scaleX: 1, y: 1)
-//        }
+}
+
+extension HomeViewController: SearchResultDelegateProtocol {
+    func didSelectSearchResult(location: LocationModel) {
+        print("did select item \(location)")
     }
 }
 

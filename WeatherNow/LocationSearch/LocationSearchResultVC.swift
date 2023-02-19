@@ -19,6 +19,8 @@ class LocationSearchResultVC: UIViewController {
         }
     }
     
+    weak var delegate: SearchResultDelegateProtocol?
+    
     let resultTableView = UITableView()
     var cityList: [LocationModel] = []
 
@@ -34,11 +36,11 @@ class LocationSearchResultVC: UIViewController {
         NSLayoutConstraint.activate([
             resultTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             resultTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 90),
-            resultTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            resultTableView.widthAnchor.constraint(equalToConstant: 700),
             resultTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-        resultTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        resultTableView.register(LocationResultTableViewCell.self, forCellReuseIdentifier: LocationResultTableViewCell.CELL_IDENTIFIER)
         resultTableView.dataSource = self
         resultTableView.delegate = self
     }
@@ -50,7 +52,11 @@ class LocationSearchResultVC: UIViewController {
         let header = ["X-RapidAPI-Key": apiKey]
         let url = "https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=" + searchString
         searchTask = ServiceManager.shared.callService(urlString: url, method: .GET, headers: header) { [weak self] (response: LocationsResponseModel) in
-            print(response)
+            
+            guard response.locationsList?.count ?? 0 > 0 else { return }
+            self?.cityList = response.locationsList!
+            self?.resultTableView.reloadData()
+            
         } fail: { error in
             print(error)
         }
@@ -66,17 +72,21 @@ extension LocationSearchResultVC: UISearchResultsUpdating {
 
 extension LocationSearchResultVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return cityList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        let cell = tableView.dequeueReusableCell(withIdentifier: LocationResultTableViewCell.CELL_IDENTIFIER, for: indexPath)
         
+        if let cell = cell as? LocationResultTableViewCell {
+            cell.cityNameLabel.text = cityList[indexPath.item].name ?? ""
+        }
         return cell
     }
 }
 
 extension LocationSearchResultVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelectSearchResult(location: cityList[indexPath.item])
+    }
 }
