@@ -137,7 +137,7 @@ class HomeViewController: UIViewController {
         let locationChangeButtonTitle = firstOptionString
         let backButtonTitle = secondOptionString
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = CustomAlertViewController(title: title, message: message, preferredStyle: .alert)
 
         // Create the actions.
         let changeLocationAction = UIAlertAction(title: locationChangeButtonTitle, style: .default) { [weak self] _ in

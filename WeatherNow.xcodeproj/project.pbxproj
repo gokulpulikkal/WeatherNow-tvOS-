@@ -22,6 +22,7 @@
 		4B8CBF3929A20B3B00C4D462 /* LocationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */; };
 		4B8CBF3B29A2610900C4D462 /* LocationResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3A29A2610900C4D462 /* LocationResultTableViewCell.swift */; };
 		4B8CBF3E29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3D29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift */; };
+		4B8CBF4129A2AEF000C4D462 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF4029A2AEF000C4D462 /* CustomAlertViewController.swift */; };
 		4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4EE298C3640007184AB /* AppDelegate.swift */; };
 		4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* HomeViewController.swift */; };
 		4B93F4F4298C3640007184AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F2298C3640007184AB /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsResponseModel.swift; sourceTree = "<group>"; };
 		4B8CBF3A29A2610900C4D462 /* LocationResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultTableViewCell.swift; sourceTree = "<group>"; };
 		4B8CBF3D29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDelegateProtocol.swift; sourceTree = "<group>"; };
+		4B8CBF4029A2AEF000C4D462 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		4B93F4EB298C3640007184AB /* WeatherNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B93F4EE298C3640007184AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B93F4F0298C3640007184AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		4B8CBF3F29A2AECB00C4D462 /* AlertVC */ = {
+			isa = PBXGroup;
+			children = (
+				4B8CBF4029A2AEF000C4D462 /* CustomAlertViewController.swift */,
+			);
+			path = AlertVC;
+			sourceTree = "<group>";
+		};
 		4B93F4E2298C3640007184AB = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +185,7 @@
 		4B93F4ED298C3640007184AB /* WeatherNow */ = {
 			isa = PBXGroup;
 			children = (
+				4B8CBF3F29A2AECB00C4D462 /* AlertVC */,
 				4B8CBF3C29A26D0800C4D462 /* Protocols */,
 				4B8CBF2E29A1510C00C4D462 /* LocationSearch */,
 				4B8CBF2B299FF83400C4D462 /* Utilities */,
@@ -276,6 +287,7 @@
 				4B8CBF3E29A26D2E00C4D462 /* SearchResultDelegateProtocol.swift in Sources */,
 				4B8CBF3029A1514200C4D462 /* LocationSearchResultVC.swift in Sources */,
 				4B78A323299799D100F761AA /* ServiceManager.swift in Sources */,
+				4B8CBF4129A2AEF000C4D462 /* CustomAlertViewController.swift in Sources */,
 				4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */,
 				4B8CBF2D299FF85900C4D462 /* UtilityFunctions.swift in Sources */,
 				4B78A3212997990800F761AA /* NetworkManagerSupporter.swift in Sources */,
