@@ -42,17 +42,11 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: .RefreshDataNotification, object: nil)
         showTimeLabel()
         setUpCollectionView()
         UserDefaults.standard.removeObject(forKey: LOCATION_USER_DEFAULTS_KEY)
-        if let location: LocationModel = getValueFromUserDefaults(key: LOCATION_USER_DEFAULTS_KEY) {
-            makeWeatherAPICalls(location: location)
-            self.location = location
-        } else {
-            showOptionsAlertVC(title: "Hi Welcome to WeatherNow",
-                               message: "Get the latest update on weather, Just select the location you need, We will provide you the accurate result",
-                               firstOptionString: "Search The city")
-        }
+        setUpHomeViewData()
         setUpMenuPressHandler()
     }
     
@@ -62,7 +56,29 @@ class HomeViewController: UIViewController {
         timer = nil
     }
     
+    deinit {
+        print("deiniting HomeVC")
+        NotificationCenter.default.removeObserver(self, name: .RefreshDataNotification, object: nil)
+    }
+    
+    private func setUpHomeViewData() {
+        if let location: LocationModel = getValueFromUserDefaults(key: LOCATION_USER_DEFAULTS_KEY) {
+            makeWeatherAPICalls(location: location)
+            self.location = location
+        } else {
+            showOptionsAlertVC(title: "Hi Welcome to WeatherNow",
+                               message: "Get the latest update on weather, Just select the location you need, We will provide you the accurate result",
+                               firstOptionString: "Search The city")
+        }
+    }
+    
     //MARK: - Ui Handling
+    
+    // Refreshes the data for the UI
+    @objc func refreshData() {
+        setUpHomeViewData()
+    }
+    
     private func setUpCollectionView() {
         view.addSubview(forecastCollectionView)
         NSLayoutConstraint.activate([

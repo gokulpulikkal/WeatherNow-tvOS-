@@ -29,6 +29,10 @@ class LocationSearchResultVC: UIViewController {
         setUpTableView()
     }
     
+    deinit {
+        print("deiniting LocationSearchResultVC")
+    }
+    
 //    MARK: - UI handlings
     private func setUpTableView() {
         view.addSubview(resultTableView)
