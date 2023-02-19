@@ -19,6 +19,7 @@
 		4B8CBF3229A1F75400C4D462 /* Configs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3129A1F75400C4D462 /* Configs.plist */; };
 		4B8CBF3429A1F83500C4D462 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3329A1F83500C4D462 /* Configurations.swift */; };
 		4B8CBF3629A2062B00C4D462 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3529A2062B00C4D462 /* .gitignore */; };
+		4B8CBF3929A20B3B00C4D462 /* LocationsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */; };
 		4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4EE298C3640007184AB /* AppDelegate.swift */; };
 		4B93F4F1298C3640007184AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B93F4F0298C3640007184AB /* HomeViewController.swift */; };
 		4B93F4F4298C3640007184AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B93F4F2298C3640007184AB /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 		4B8CBF3129A1F75400C4D462 /* Configs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configs.plist; sourceTree = "<group>"; };
 		4B8CBF3329A1F83500C4D462 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		4B8CBF3529A2062B00C4D462 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsResponseModel.swift; sourceTree = "<group>"; };
 		4B93F4EB298C3640007184AB /* WeatherNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B93F4EE298C3640007184AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B93F4F0298C3640007184AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		4B78A3242997A05C00F761AA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4B8CBF3729A20B0C00C4D462 /* LocationData */,
 				4B78A32A2997A4D700F761AA /* CurrentWeather */,
 				4B78A3252997A06400F761AA /* ForeCastModel */,
 			);
@@ -130,6 +133,14 @@
 				4B8CBF2F29A1514100C4D462 /* LocationSearchResultVC.swift */,
 			);
 			path = LocationSearch;
+			sourceTree = "<group>";
+		};
+		4B8CBF3729A20B0C00C4D462 /* LocationData */ = {
+			isa = PBXGroup;
+			children = (
+				4B8CBF3829A20B3B00C4D462 /* LocationsResponseModel.swift */,
+			);
+			name = LocationData;
 			sourceTree = "<group>";
 		};
 		4B93F4E2298C3640007184AB = {
@@ -246,6 +257,7 @@
 				4B78A3292997A36500F761AA /* HomeVCModel.swift in Sources */,
 				4B78A3272997A10100F761AA /* ForeCastResponse.swift in Sources */,
 				4B74AD55298D894E00F2023D /* ForeCastCollectionViewCell.swift in Sources */,
+				4B8CBF3929A20B3B00C4D462 /* LocationsResponseModel.swift in Sources */,
 				4B8CBF3029A1514200C4D462 /* LocationSearchResultVC.swift in Sources */,
 				4B78A323299799D100F761AA /* ServiceManager.swift in Sources */,
 				4B93F4EF298C3640007184AB /* AppDelegate.swift in Sources */,

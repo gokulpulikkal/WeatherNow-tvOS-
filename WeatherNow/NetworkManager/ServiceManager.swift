@@ -13,6 +13,7 @@ public class ServiceManager {
     
     func callService<T: Decodable>(urlString: String,
                                    method: HTTPMethod,
+                                   headers: [String: String]? = nil,
                                    success: @escaping (T)->(),
                                    fail: @escaping (HTTPError)->()) -> URLSessionDataTask? {
         
@@ -20,11 +21,15 @@ public class ServiceManager {
             fail(.requestError)
             return nil
         }
-        
-        let urlSession = URLSession.shared
         var request = URLRequest(url: urlObj)
         request.httpMethod = method.rawValue
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let config = URLSessionConfiguration.default
+        
+        if let headers = headers {
+            config.httpAdditionalHeaders = headers
+        }
+        let urlSession = URLSession.init(configuration: config)
         
         let task: URLSessionDataTask = urlSession.dataTask(with: request) { data, response, error in
             
