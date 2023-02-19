@@ -1,6 +1,3 @@
-The tracking of the development of the app can be checked with https://berry-shirt-995.notion.site/2a888b8d41524a2ba496509ffff53936?v=3ec1f33e7bf04f97a88265bd3ffdc98d
-
-
 <h1 align="center">WeatherNow</h1>
 
 <p align="center">
@@ -36,7 +33,7 @@ At the time of development I used Xocde version 14.2. The target tvOS version is
 ### Installation
 
 1. clone the repo
-2. create a plist named Configs
+2. create Configs.plist
     - Add locationsAPIKey
     - add OpenWeatherKey
     Both you can find from geo db APIs and openweathermap respectively
