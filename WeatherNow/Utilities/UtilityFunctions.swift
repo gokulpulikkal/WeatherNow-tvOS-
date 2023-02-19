@@ -14,3 +14,23 @@ func getTimeStringFromSec(seconds: Double, format: String = "E, h:mm a") -> Stri
     return dateFormatter.string(from: date)
 }
 
+func saveObjectToUserDefaults<T: Codable>(object: T, key: String) {
+    do {
+        let data = try JSONEncoder().encode(object)
+        UserDefaults.standard.set(data, forKey: key)
+    } catch let error {
+        print("save failed \(error)")
+    }
+}
+
+func getValueFromUserDefaults<T: Codable>(key: String) -> T? {
+    do {
+        guard let data = UserDefaults.standard.data(forKey: key) else { return nil }
+        return try JSONDecoder().decode(T.self, from: data)
+        
+    } catch let error {
+        print("retrieving failed \(error)")
+        return nil
+    }
+}
+

@@ -20,8 +20,13 @@ class HomeViewController: UIViewController {
     private var timer: Timer?
     var menuPressRecognizer: UITapGestureRecognizer?
     
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
+    let LOCATION_USER_DEFAULTS_KEY = "location"
+    var canExitAppIfNoLocation = false
+    var location: LocationModel? {
+        didSet {
+            self.locationLabel.text = location?.name ?? ""
+        }
+    }
     
     var weatherList: [BaseWeatherModel] = []
     
@@ -39,8 +44,15 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         showTimeLabel()
         setUpCollectionView()
-        makeInitialAPICalls()
-        
+        UserDefaults.standard.removeObject(forKey: LOCATION_USER_DEFAULTS_KEY)
+        if let location: LocationModel = getValueFromUserDefaults(key: LOCATION_USER_DEFAULTS_KEY) {
+            makeWeatherAPICalls(location: location)
+            self.location = location
+        } else {
+            showOptionsAlertVC(title: "Hi Welcome to WeatherNow",
+                               message: "Get the latest update on weather, Just select the location you need, We will provide you the accurate result",
+                               firstOptionString: "Search The city")
+        }
         setUpMenuPressHandler()
     }
     
@@ -79,11 +91,14 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func showOptionsAlertVC() {
-        let title = "Hey There"
-        let message = "What do you wanna do now? Select one option"
-        let locationChangeButtonTitle = "Change Location"
-        let backButtonTitle = "Exit!"
+    private func showOptionsAlertVC(title: String = "Hey There",
+                                    message: String = "What do you wanna do now? Select one option",
+                                    firstOptionString: String = "Change Location",
+                                    secondOptionString: String="Exit!") {
+        let title = title
+        let message = message
+        let locationChangeButtonTitle = firstOptionString
+        let backButtonTitle = secondOptionString
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -99,6 +114,7 @@ class HomeViewController: UIViewController {
         // Add the actions.
         alertController.addAction(changeLocationAction)
         alertController.addAction(backAction)
+        self.canExitAppIfNoLocation = true
         present(alertController, animated: true, completion: nil)
     }
     
@@ -127,8 +143,8 @@ class HomeViewController: UIViewController {
     }
     
    //MARK: - API calls
-    func makeInitialAPICalls() {
-        getCurrentWeather(lon: 12.9767936, lat: 12.9767936) { [weak self] currentWeather in
+    func makeWeatherAPICalls(location: LocationModel) {
+        getCurrentWeather(lon: location.longitude ?? 0, lat: location.latitude ?? 0) { [weak self] currentWeather in
             guard let self = self else { return }
             self.temperatureLabel.text = "\(Int(currentWeather.main?.temp ?? 0))°C"
             self.weatherStatusLabel.text = currentWeather.weather?.first?.description ?? ""
@@ -138,7 +154,7 @@ class HomeViewController: UIViewController {
             self.weatherStatusImageView.image = UIImage(named: "\(currentWeather.weather?.first?.main ?? "")")
         }
         
-        getForecastData(lon: 12.9767936, lat: 12.9767936) { [weak self] forecastList in
+        getForecastData(lon: location.longitude ?? 0, lat: location.latitude ?? 0) { [weak self] forecastList in
             guard let self = self else { return }
             guard let weatherList = forecastList.weatherList else { return }
             
@@ -166,6 +182,17 @@ class HomeViewController: UIViewController {
     }
     
     private func onSelectingBackButton() {
+        suspendApp()
+    }
+    
+    private func checkLocationAvailabilityAndShowMsg() {
+        if location == nil {
+            // show info message
+            print("showing some message")
+        }
+    }
+    
+    private func suspendApp() {
         UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
     }
     
@@ -174,10 +201,6 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.weatherList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -192,7 +215,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: SearchResultDelegateProtocol {
     func didSelectSearchResult(location: LocationModel) {
-        print("did select item \(location)")
+        // removing the searchVC
+        self.navigationController?.popViewController(animated: true)
+        
+        // save the location details on persistent storage
+        saveObjectToUserDefaults(object: location, key: LOCATION_USER_DEFAULTS_KEY)
+       
+        // reload the locations data and
+        self.location = location
+        makeWeatherAPICalls(location: location)
     }
 }
 

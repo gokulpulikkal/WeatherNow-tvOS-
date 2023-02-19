@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationsResponseModel: Decodable {
+struct LocationsResponseModel: Codable {
     let locationsList: [LocationModel]?
     let links: [LinkModel]?
     let metadata: MetadataModel?
@@ -22,7 +22,7 @@ struct LocationsResponseModel: Decodable {
     }
 }
 
-struct LocationModel: Decodable {
+struct LocationModel: Codable {
     let id: Double?
     let wikiDataId: String?
     let name: String?
@@ -31,12 +31,12 @@ struct LocationModel: Decodable {
     let longitude: Double?
 }
 
-struct LinkModel: Decodable {
+struct LinkModel: Codable {
     let rel: String?
     let href: String?
 }
 
-struct MetadataModel: Decodable {
+struct MetadataModel: Codable {
     let currentOffset: Int?
     let totalCount: Int?
 }
