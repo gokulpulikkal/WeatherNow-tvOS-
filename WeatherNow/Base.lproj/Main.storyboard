@@ -118,11 +118,19 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OX-Gi-0si">
+                                <rect key="frame" x="914" y="517" width="92" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="c0Z-kT-Xvu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="05t-uH-FVI"/>
+                            <constraint firstItem="1OX-Gi-0si" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CO8-Sb-t4M"/>
+                            <constraint firstItem="1OX-Gi-0si" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HVL-x3-GSi"/>
                             <constraint firstItem="r82-Hy-WUR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="HpE-TD-zAT"/>
                             <constraint firstItem="r82-Hy-WUR" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="16" id="Qtb-7d-Dys"/>
                             <constraint firstItem="5yR-9I-Ntk" firstAttribute="bottom" secondItem="JwQ-2l-Bz6" secondAttribute="bottom" id="XTl-xI-4qv"/>
@@ -142,6 +150,7 @@
                         <outlet property="locationLabel" destination="Xep-VL-niU" id="yav-Kr-wa4"/>
                         <outlet property="lowestTempTitleLabel" destination="7Od-Fj-NMq" id="gQ4-ir-B8F"/>
                         <outlet property="lowestTemperatureLabel" destination="oLG-Ah-5yJ" id="1JZ-Sa-VZV"/>
+                        <outlet property="selectLocationMessageLabel" destination="1OX-Gi-0si" id="79K-Hu-8iQ"/>
                         <outlet property="temperatureLabel" destination="gN5-lN-xYs" id="mQD-BR-gi9"/>
                         <outlet property="weatherStatusImageView" destination="c0Z-kT-Xvu" id="GcK-QS-eqf"/>
                         <outlet property="weatherStatusLabel" destination="yn1-uj-Sng" id="SgH-nx-Hkl"/>

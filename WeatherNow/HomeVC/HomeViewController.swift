@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var feelsLikeTitleLabel: UILabel!
     @IBOutlet weak var highestTempTitleLabel: UILabel!
     @IBOutlet weak var lowestTempTitleLabel: UILabel!
+    @IBOutlet weak var selectLocationMessageLabel: UILabel!
     
     private var timer: Timer?
     var menuPressRecognizer: UITapGestureRecognizer?
@@ -69,6 +70,10 @@ class HomeViewController: UIViewController {
             makeWeatherAPICalls(location: location)
             self.location = location
         } else {
+            // The below label will be shown to the user incase of dismissing alert view without selecting location
+            handleGeneralInfoLabel(show: true)
+            
+            // Showing the alert view
             showOptionsAlertVC(title: "Hi Welcome to WeatherNow",
                                message: "Get the latest update on weather, Just select the location you need, We will provide you the accurate result",
                                firstOptionString: "Search The city")
@@ -91,6 +96,12 @@ class HomeViewController: UIViewController {
         self.locationLabel.isHidden = true
         weatherList = []
         forecastCollectionView.reloadData()
+    }
+    
+    // this function is to show hide info label to inform user to select a location
+    private func handleGeneralInfoLabel(show: Bool = true) {
+        selectLocationMessageLabel.text = "Hi let's start by selecting one Location. \n You can easily do this by choosing Options selector on MENU press"
+        selectLocationMessageLabel.isHidden = !show
     }
     
     private func setUpCollectionView() {
@@ -260,6 +271,9 @@ extension HomeViewController: SearchResultDelegateProtocol {
     func didSelectSearchResult(location: LocationModel) {
         // removing the searchVC
         self.navigationController?.popViewController(animated: true)
+        
+        // disabling info label
+        handleGeneralInfoLabel(show: false)
         
         // save the location details on persistent storage
         saveObjectToUserDefaults(object: location, key: LOCATION_USER_DEFAULTS_KEY)
