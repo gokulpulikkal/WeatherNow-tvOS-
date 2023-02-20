@@ -34,3 +34,10 @@ func getValueFromUserDefaults<T: Codable>(key: String) -> T? {
     }
 }
 
+func isDayTime(time: Date) -> Bool {
+    // Get the sunrise and sunset times for the assumed time zone
+    let calendar = Calendar.current
+    let hour = calendar.component(.hour, from: time)
+    return hour >= 6 && hour < 18
+}
+

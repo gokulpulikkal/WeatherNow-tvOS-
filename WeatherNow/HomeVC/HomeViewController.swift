@@ -198,7 +198,16 @@ class HomeViewController: UIViewController {
             self.feelsLikeLabel.text = "\(Int(currentWeather.main?.feelsLike ?? 0))°C"
             self.highestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMax ?? 0))°C"
             self.lowestTemperatureLabel.text = "\(Int(currentWeather.main?.tempMin ?? 0))°C"
-            self.weatherStatusImageView.image = UIImage(named: "\(currentWeather.weather?.first?.main ?? "")")
+            if currentWeather.weather?.first?.main == "Clear" {
+                if isDayTime(time: Date()) {
+                    self.weatherStatusImageView.image = UIImage(named: "Clear")
+                } else {
+                    self.weatherStatusImageView.image = UIImage(named: "Clear-night")
+                }
+                
+            } else {
+                self.weatherStatusImageView.image = UIImage(named: "\(currentWeather.weather?.first?.main ?? "")")
+            }
             
             self.feelsLikeTitleLabel.isHidden = false
             self.highestTempTitleLabel.isHidden = false

@@ -131,9 +131,10 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
     
     private func setDataOnViews() {
         guard let cellData = self.cellData else { return }
-        
+        var date = Date()
         if let time = cellData.timeInSec {
             timeLabel.text = getTimeStringFromSec(seconds: time)
+            date = Date(timeIntervalSince1970: time)
         }
         
         if let weatherDescription = cellData.weather?.first?.description {
@@ -141,7 +142,15 @@ class ForeCastCollectionViewCell: UICollectionViewCell {
         }
         
         if let icon = cellData.weather?.first?.main {
-            weatherImageView.image = UIImage(named: "\(icon)")
+            if icon == "Clear" {
+                if isDayTime(time: date) {
+                    self.weatherImageView.image = UIImage(named: "Clear")
+                } else {
+                    self.weatherImageView.image = UIImage(named: "Clear-night")
+                }
+            } else {
+                self.weatherImageView.image = UIImage(named: "\(icon)")
+            }
         }
         
         if let maxTemp = cellData.main?.tempMax {
