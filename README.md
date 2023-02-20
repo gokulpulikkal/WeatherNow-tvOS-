@@ -20,7 +20,7 @@
 
 ## 🧐 About
 
-WeatherNow is a tvOS weather app that displays the current weather for a selected city. It was create only for study purposes. The same App you can find in Roku platform aswell.
+WeatherNow is a tvOS weather app that displays the current weather for a selected city. It was created only for study purposes. The same App you can find in Roku platform aswell feel free to check that repo also.
 
 ## 🏁 Getting Started
 
