@@ -3,7 +3,7 @@
 <p align="center">
   <i>WeatherNow is a tvOS weather app that displays the current weather for a selected city. It uses the openweathermap and geo db APIs to retrieve the weather data.</i>
 </p>
-![Alt text]([http://full/path/to/img.jpg](https://www.dropbox.com/s/kt5mt2akeanwhft/Simulator%20Screen%20Shot%20-%20Apple%20TV%204K%20%283rd%20generation%29%20%28at%201080p%29%20-%202023-02-20%20at%2022.21.30.png?dl=0))
+![Alt text]([http://full/path/to/img.jpg](https://www.dropbox.com/s/kt5mt2akeanwhft/Simulator%20Screen%20Shot%20-%20Apple%20TV%204K%20%283rd%20generation%29%20%28at%201080p%29%20-%202023-02-20%20at%2022.21.30.png?dl=0) "")
 ## 📝 Table of Contents
 
 - [About](#about)
