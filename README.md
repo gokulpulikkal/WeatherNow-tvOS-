@@ -4,6 +4,7 @@
   <i>WeatherNow is a tvOS weather app that displays the current weather for a selected city. It uses the openweathermap and geo db APIs to retrieve the weather data.</i>
 </p>
 ![Simulator Screen Shot - Apple TV 4K (3rd generation) (at 1080p) - 2023-02-20 at 22 21 30](https://user-images.githubusercontent.com/52960334/220165370-7d93504b-665c-4705-8812-aa2b509c2a30.png)
+
 ## 📝 Table of Contents
 
 - [About](#about)
