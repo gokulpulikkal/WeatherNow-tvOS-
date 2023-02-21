@@ -5,7 +5,7 @@
 </p>
 
 
-![WeatherAPPScreenRecording_AdobeExpress](https://user-images.githubusercontent.com/52960334/220396444-eb81a338-3883-44f6-853e-ea80b1664407.gif)
+![WeatherAPPScreenRecording_AdobeExpress](https://user-images.githubusercontent.com/52960334/220396444-eb81a338-3883-44f6-853e-ea80b1664407.gif =500x300)
 
 
 ## 📝 Table of Contents
