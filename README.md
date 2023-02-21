@@ -4,7 +4,8 @@
   <i>WeatherNow is a tvOS weather app that displays the current weather for a selected city. It uses the openweathermap and geo db APIs to retrieve the weather data.</i>
 </p>
 
-<img src="p[ath/to/image.gif](https://user-images.githubusercontent.com/52960334/220396444-eb81a338-3883-44f6-853e-ea80b1664407.gif)" alt="alt text" width="500" height="300"/>
+
+![WeatherAPPScreenRecording](https://user-images.githubusercontent.com/52960334/220410292-c3b8c5d5-0d51-422d-b526-6fd66eb127d4.gif)
 
 
 ## 📝 Table of Contents
