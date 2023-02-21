@@ -5,8 +5,7 @@
 </p>
 
 
-![Simulator Screen Shot - Apple TV 4K (3rd generation) (at 1080p) - 2023-02-20 at 22 21 30](https://user-images.githubusercontent.com/52960334/220166452-fdb5e078-6fca-4ff2-844b-ff875a83fda0.png)
-
+![WeatherAPPScreenRecording_AdobeExpress](https://user-images.githubusercontent.com/52960334/220396444-eb81a338-3883-44f6-853e-ea80b1664407.gif)
 
 
 ## 📝 Table of Contents
