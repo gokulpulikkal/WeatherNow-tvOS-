@@ -22,9 +22,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var selectLocationMessageLabel: UILabel!
     
     private var timer: Timer?
+    private var dataRefreshTimer: Timer?
     var menuPressRecognizer: UITapGestureRecognizer?
     
     let LOCATION_USER_DEFAULTS_KEY = "location"
+    let DATA_REFRESH_INTERVAL: Double = 300
     var location: LocationModel? {
         didSet {
             self.locationLabel.isHidden = false
@@ -52,17 +54,20 @@ class HomeViewController: UIViewController {
 //        UserDefaults.standard.removeObject(forKey: LOCATION_USER_DEFAULTS_KEY)
         setUpHomeViewData()
         setUpMenuPressHandler()
+        setUpWeatherRefreshTimer()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        timer?.invalidate()
-        timer = nil
     }
     
     deinit {
         print("deiniting HomeVC")
         NotificationCenter.default.removeObserver(self, name: .RefreshDataNotification, object: nil)
+        timer?.invalidate()
+        timer = nil
+        dataRefreshTimer?.invalidate()
+        dataRefreshTimer = nil
     }
     
     private func setUpHomeViewData() {
@@ -186,7 +191,14 @@ class HomeViewController: UIViewController {
         // Sets the focus to the SearchControllerView
         updateFocusIfNeeded()
         setNeedsFocusUpdate()
-        
+    }
+    
+    func setUpWeatherRefreshTimer() {
+        dataRefreshTimer = Timer.scheduledTimer(withTimeInterval: DATA_REFRESH_INTERVAL, repeats: true) { [weak self] timer in
+            if let location = self?.location {
+                self?.makeWeatherAPICalls(location: location)
+            }
+        }
     }
     
    //MARK: - API calls
